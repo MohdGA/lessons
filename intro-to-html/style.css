@@ -1,0 +1,37 @@
+h2 {
+  font-family: Arial, sans-serif;
+  font-size: 28px;
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
+  background-color: var(--primaryColor);
+}
+
+body{
+  margin:0;
+  background-color: rgb(251, 251, 251);
+  /* variables in the css to not copy and identify the reason to use anything like colors */
+  --primaryColor: black;
+}
+
+ul{
+  margin: 0;
+}
+
+div{
+  color:blue;
+}
+
+.super-cool{
+  border:2px solid pink;
+  color:var(--primaryColor);
+}
+
+#about{
+  font-style:italic;
+  color:hotpink
+}
+
+div p{
+  color:black;
+}

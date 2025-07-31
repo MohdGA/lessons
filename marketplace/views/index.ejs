@@ -1,0 +1,18 @@
+<%- include('./partials/head') %>
+<% if (user) { %>
+<h1 class="text-center">Welcome to the app, <%= user.username %>!</h1>
+<a href="/listings/new">Add a List</a>
+<br>
+<a href="/listings">View all Listings</a>
+<br>
+<a href="/auth/sign-out">Sign out</a>
+<% } else { %>
+<h1>Welcome to the app, guest.</h1>
+<p>
+  <a href="/auth/sign-up">Sign up</a> or <a href="/auth/sign-in">sign in</a>.
+  <br>
+</p>
+<% } %>
+
+</body>
+</html>

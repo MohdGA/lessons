@@ -1,0 +1,39 @@
+const dotenv = require('dotenv');
+dotenv.config();
+const express = require('express');
+const mongoose = require('mongoose');
+const app = express();
+const port = 3000;
+const path = require('path');
+const methodOverride = require('method-override');
+const morgan = require('morgan');
+
+
+// Controllers
+const businessController = require('./controllers/businessController');
+
+// MiddLEWARE
+// to connect public folder
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({extended:false}));
+app.use(methodOverride('_method'));
+app.use(morgan('dev'));
+
+
+// .ENV CONNECTION TO MONGODB
+mongoose.connect(process.env.MONGODB_URI);
+
+// DATABASE CONNECTION
+mongoose.connection.on("connected", () => {
+  console.log(`Conected to MongoDB${mongoose.connection.name}`);
+});
+
+app.get('/', (req,res) => {
+  res.render('index.ejs');
+})
+
+app.use('/businesses',businessController);
+
+app.listen(port), () => {
+  console.log("SERVER IS WORKING");
+}

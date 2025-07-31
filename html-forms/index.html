@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Contact Form</h1>
+  <form action="/submitForm" mathod="POST">
+
+    <div>
+      <label for="name">*Name:</label>
+      <input type="text" placeholder="type username" id="name"/> 
+    </div>
+
+    <div>
+      <label for="email">*Email:</label>
+      <input type="email" placeholder="type email" id="email"/>
+    </div>
+
+    <div>
+      <label for="category">Contact List:</label>
+      <select name="" id="category">
+        <option value="work">A Job Opportunity</option>
+        <option value="question">A Question</option>
+        <option value="teaching">Student</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="date">*Date:</label>
+      <input type="date" name="" id="date">
+    </div>
+
+    <div>
+      <label for="phone">*Phone Number:</label>
+      <input type="tel" name="" id="">
+    </div>
+
+    <div>
+      <label for="pets">*Pets</label>
+      <datalist id="pets">
+        <option value="cats"></option>
+        <option value="dogs"></option>
+        <option value="rabbits"></option>
+        <option value="birds"></option>
+      </datalist>
+    </div>
+
+
+    <div>
+      <label for="msg">Message:</label>
+      <textarea id="msg" minlength="5" maxlength="20"></textarea>
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>
