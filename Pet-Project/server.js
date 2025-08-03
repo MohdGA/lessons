@@ -4,22 +4,30 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const logger = require('morgan');
+const petController = require('./controllers/pets');
 
+// mongodb connection
 mongoose.connect(process.env.MONGODB_URI);
-
 mongoose.connection.on('connected', () => {
   console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
 
+
+// middleware
 app.use(express.json());
 app.use(logger('dev'));
 
+
+// routes
 app.get('/', (req,res) => {
-  res.send('HELLO WORLD')
-})
+  res.send('<h1> HELLO WORLD </h1>')
+});
 
-// Routes go here
+app.use('/pets', petController);
 
-app.listen(3000, () => {
+
+// server
+const port = process.env.port ? process.env.port : 3000;
+app.listen(port, () => {
   console.log('The express app is ready!');
 });
