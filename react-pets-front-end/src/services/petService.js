@@ -10,7 +10,52 @@ const index = async () => {
   
 };
 
+const create = async (formData) => {
+  try{
+    const res = await fetch(BASE_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+      });
+    
+    return await res.json();
+
+  } catch(error) {
+    console.log(error.message);
+  };
+};
+
+const update = async (formData, petId) => {
+  try{
+    const res = await fetch(BASE_URL+"/"+petId, {
+      method: "PUT",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+      })
+    return await res.json();
+  } catch(error){
+    console.log(error)
+  }
+}
+
+const remove = async (petId) => {
+  try{
+    const res = await fetch(BASE_URL + "/" + petId, {
+      method: "delete",
+      });
+    return await res.json();
+  } catch(error){
+    console.log(error.message);
+  }
+}
 
 export {
   index,
+  create,
+  update,
+  remove
 }

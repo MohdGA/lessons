@@ -9,11 +9,13 @@ const PetList = (props) => {
         <ol>
         {props.pets.length ? 
           props.pets.map((pet, idx) => 
-            <li key={idx}>
-              Name: {pet.name}  {pet.age <= 1 ? `${pet.age} year old` : `${pet.age} years old`}
-              <p>Breed: {pet.breed}</p>
-              <hr />
+            <li key={idx}  
+              style={{cursor: 'pointer', fontWeight: 'bold'}}
+              onClick={() => props.handleSelect(pet)}
+            >
+              {pet.name}
             </li>
+           
           ) : <h2>Add pets</h2> }
           
          
