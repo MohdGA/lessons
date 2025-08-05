@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const logger = require('morgan');
 const JwtRouter = require('./controllers/test-jwt');
+const authController = require('./controllers/auth');
 
 
 mongoose.connect(process.env.MONGODB_URI);
@@ -22,7 +23,10 @@ app.use(logger('dev'));
 app.get('/', (req,res) => {
   res.json('home page')
 });
+
+app.use('/auth', authController);
 app.use('/jwt', JwtRouter);
+
 
 
 const port = process.env.port ? process.env.port : 3000;
