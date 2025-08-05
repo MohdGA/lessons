@@ -15,12 +15,10 @@ router.get('/sign-token', (req,res) => {
 });
 
 // controllers/test-jwt.js
-router.post('/verify-token', (req, res) => {
+router.post('/verify-token', (req, res, next) => {
   try{
     const token = req.headers.authorization.split(' ')[1];
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-    console.log(decoded)
 
     res.json({ decoded });
 
