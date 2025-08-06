@@ -12,7 +12,8 @@ const App = () => {
   const [user, setUser] = useState(null);
 
   const handleSignUp = async (formData) => {
-   await authService.signUp(formData);
+    const res = await authService.signUp(formData);
+    console.log(res);
   }
   
 
