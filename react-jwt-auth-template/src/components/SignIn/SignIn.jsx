@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Navigate, useNavigate } from "react-router-dom";
 
 const initialState = {
@@ -11,6 +11,12 @@ const SignIn = (props) => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState(initialState);
+
+  useEffect(() => {
+      if(props.user){
+        navigate('/')
+      }
+    }, [props.user])
 
   const handleChange = (event) => {
     setFormData({...formData, [event.target.name] : event.target.value})

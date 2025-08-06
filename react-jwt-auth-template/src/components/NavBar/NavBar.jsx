@@ -9,6 +9,7 @@ const NavBar = (props) => {
       {props.user ? 
 
         <nav>
+          <h2>Welcome {props.user.username}</h2>
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/" onClick={props.hanldeSignOut}>Sign Out</Link></li>

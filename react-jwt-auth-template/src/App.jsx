@@ -44,10 +44,10 @@ const App = () => {
         :
         <Route path='/' element={<Landing />}/>
         }
-        <Route path="/sign-up" element={<SignUp handleSignUp={handleSignUp} />}/>
-        <Route path='*' element={<h1>404 Error</h1>}/>
+        <Route path="/sign-up" element={<SignUp handleSignUp={handleSignUp} user={user} />}/>
+        {/* <Route path='*' element={<h1>404 Error</h1>}/> */}
 
-        <Route path="/sign-in" element={<SignIn handleSignIn={handleSignIn}/>}/>
+        <Route path="/sign-in" element={<SignIn handleSignIn={handleSignIn} user={user}/>}/>
       </Routes>
     </>
   )
