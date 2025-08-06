@@ -1,4 +1,3 @@
-// src/App.jsx
 import "./App.css";
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
@@ -16,8 +15,14 @@ const App = () => {
   const [user, setUser] = useState(initialState);
 
   const handleSignUp = async (formData) => {
-    const res = await authService.signUp(formData);
-    setUser(formData);
+    try{
+      const res = await authService.signUp(formData);
+      setUser(res);
+      return {success: true};
+    } catch(error){
+      return {success: false, message: error.message};
+    }
+    
   }
   
   const hanldeSignOut = () => {
@@ -32,7 +37,6 @@ const App = () => {
 
   return (
     <>
-      
       <NavBar user={user} hanldeSignOut={hanldeSignOut}/>
       <Routes>
         {user ? 

@@ -12,15 +12,20 @@ const SignUp = (props) => {
   }
   const [formData, setFormData] = useState(initialState);
 
+  const [error,setError] = useState(null);
+
   const hanldeChange = (event) => {
     setFormData({...formData, [event.target.name]: event.target.value})
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
-    props.handleSignUp(formData);
-    setFormData(initialState);
-    navigate('/');
+    const result = await props.handleSignUp(formData);setFormData(initialState);
+    if(result.success){
+      navigate('/');
+    }else{
+      setError(result.message);
+    }    
   };
 
   let formIsInvalid = true;
@@ -32,7 +37,7 @@ const SignUp = (props) => {
   return (
     <>
       <h2>Sign Up Form</h2>
-
+      {error}
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username:</label>
         <input 

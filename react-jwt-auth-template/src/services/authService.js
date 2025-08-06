@@ -11,6 +11,10 @@ const signUp = async (formData) => {
       body: JSON.stringify(formData),
     });
     const data = await res.json();
+
+    if(!res.ok){
+      throw new Error(data.error || 'Something went wrong!');
+    }
     
     if(data.token){
       localStorage.setItem('token', data.token);
@@ -19,6 +23,7 @@ const signUp = async (formData) => {
     }
   } catch(error){
     console.log(error);
+    throw error;
   }
 };
 
