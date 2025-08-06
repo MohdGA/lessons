@@ -4,7 +4,6 @@ import { Navigate, useNavigate } from "react-router-dom";
 const initialState = {
   username: "",
   password: "",
-  passwordConf: "",
 };
 
 const SignIn = (props) => {
@@ -49,14 +48,7 @@ const SignIn = (props) => {
         onChange={handleChange}
          />
 
-         <label htmlFor="passwordConf">Password:</label>
-        <input 
-        type="text"
-        id="passwordConf"
-        name="passwordConf"
-        value={formData.passwordConf}
-        onChange={handleChange}
-         />
+        
    
         <br />
         <br />

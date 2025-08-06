@@ -8,6 +8,7 @@ const SignUp = (props) => {
   const initialState = {
     username: '',
     password: '',
+    passowrdConf: "",
   }
   const [formData, setFormData] = useState(initialState);
 
@@ -46,6 +47,16 @@ const SignUp = (props) => {
         value={formData.password}
         onChange={hanldeChange}
         />
+        <br />
+        <label htmlFor="passwordConf">Confirm password:</label>
+        <input 
+        type="text"
+        id="passwordConf"
+        name="passwordConf"
+        value={formData.passowrdConf}
+        onChange={hanldeChange}
+         />
+
         <br /> <br />
         <button type="submit">Add user</button>
       </form>
