@@ -7,20 +7,33 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Landing from './components/Landing/Landing';
 import SignUp from './components/SignUp/SignUp';
 import * as authService from './services/authService';
+import SignIn from "./components/SignIn/SignIn";
 
 const App = () => {
-  const [user, setUser] = useState(null);
+
+  const initialState = authService.getUser();
+
+  const [user, setUser] = useState(initialState);
 
   const handleSignUp = async (formData) => {
     const res = await authService.signUp(formData);
-    console.log(res);
+    setUser(formData);
   }
   
+  const hanldeSignOut = () => {
+    localStorage.removeItem('token');
+    setUser(null);
+  }
+
+  const handleSignIn = async (formData) => {
+   const res =  await authService.signIn(formData);
+   setUser(res);
+  }
 
   return (
     <>
       
-      <NavBar user={user}/>
+      <NavBar user={user} hanldeSignOut={hanldeSignOut}/>
       <Routes>
         {user ? 
         <Route path="/" element={<Dashboard user={user}/>}/>
@@ -29,6 +42,8 @@ const App = () => {
         }
         <Route path="/sign-up" element={<SignUp handleSignUp={handleSignUp} />}/>
         <Route path='*' element={<h1>404 Error</h1>}/>
+
+        <Route path="/sign-in" element={<SignIn handleSignIn={handleSignIn}/>}/>
       </Routes>
     </>
   )

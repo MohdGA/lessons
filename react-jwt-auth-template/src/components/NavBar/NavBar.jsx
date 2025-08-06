@@ -1,13 +1,17 @@
 import { Link } from "react-router-dom";
 
-const NavBar = ({ user }) => {
+const NavBar = (props) => {
+
+
+
   return (
     <>
-      {user ? 
+      {props.user ? 
+
         <nav>
           <ul>
             <li><Link to="/">Home</Link></li>
-            <li><Link to="">Sign Out</Link></li>
+            <li><Link to="/" onClick={props.hanldeSignOut}>Sign Out</Link></li>
           </ul>
         </nav>
       :
