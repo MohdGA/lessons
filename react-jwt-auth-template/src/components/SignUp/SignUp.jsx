@@ -21,6 +21,12 @@ const SignUp = (props) => {
     props.handleSignUp(formData);
     setFormData(initialState);
     navigate('/');
+  };
+
+  let formIsInvalid = true;
+
+  if(formData.username && formData.password && formData.password === formData.passowrdConf){
+    formIsInvalid = false;
   }
 
   return (
@@ -48,17 +54,17 @@ const SignUp = (props) => {
         onChange={hanldeChange}
         />
         <br />
-        <label htmlFor="passwordConf">Confirm password:</label>
+        <label htmlFor="passowrdConf">Confirm password:</label>
         <input 
-        type="text"
-        id="passwordConf"
-        name="passwordConf"
+        type="password"
+        id="passowrdConf"
+        name="passowrdConf"
         value={formData.passowrdConf}
         onChange={hanldeChange}
          />
 
         <br /> <br />
-        <button type="submit">Add user</button>
+        <button type="submit" disabled={formIsInvalid}>Add user</button>
       </form>
       
     </>
