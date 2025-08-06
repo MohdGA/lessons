@@ -8,6 +8,7 @@ const jwt = require('jsonwebtoken');
 const saltRounds = 12;
 
 router.post('/sign-up', async (req, res) => {
+  console.log(req.body);
   try{
     const {username, password} = req.body;
 
