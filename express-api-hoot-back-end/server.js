@@ -8,7 +8,9 @@ const logger = require('morgan');
 const JwtRouter = require('./controllers/test-jwt');
 const authController = require('./controllers/auth');
 const verifyToken = require('./middleware/verify-token')
-const userRouter = require('./controllers/users')
+const userRouter = require('./controllers/users');
+const hootsRouter = require('./controllers/hoot');
+
 
 mongoose.connect(process.env.MONGODB_URI);
 mongoose.connection.on('connected', () => {
@@ -27,11 +29,8 @@ app.get('/', (req,res) => {
 
 app.use('/auth', authController);
 app.use('/jwt', JwtRouter);
-
-
-// PROTECTED ROUTES
-app.use(verifyToken);
 app.use('/users', userRouter);
+app.use('/hoots',hootsRouter)
 
 
 const port = process.env.port ? process.env.port : 3000;
