@@ -6,6 +6,7 @@ from sqlalchemy import create_engine
 from models.base import Base # import base model
 
 engine = create_engine(db_URI)
+
 SessionLocal = sessionmaker(bind=engine)
 
 try:
