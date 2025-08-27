@@ -1,3 +1,7 @@
 # config/environment.py
-db_URI="postgresql://mohd:123@localhost:5432/teas_db"
-# secret = "mysecretcode"
+import os
+
+db_URI=os.getenv('DB_URI')
+secret = os.getenv('secret')
+
+
